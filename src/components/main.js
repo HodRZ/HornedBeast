@@ -17,11 +17,15 @@ class Main extends React.Component {
     render() {
         return (
             <Row xs={1} md={3} className="g-4">
-                {Array.from({ length: 1 }).map((_, idx) => (
-                    <Col>
-                        <HornedBeast animalData={this.state.animalData} />
-                    </Col>
-                ))}
+                {this.state.animalData.map(animal => {
+                    return (
+
+                        <Col>
+                            <HornedBeast animalData={animal} />
+                        </Col>
+
+                    )
+                })}
             </Row>
         )
     }
