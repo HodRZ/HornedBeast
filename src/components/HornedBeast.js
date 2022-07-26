@@ -2,18 +2,6 @@ import React from "react";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
- // counts = (this.state.animals) =>{
-    //     this.state.animals.map(animal ,idx=>{
-    //         this.setState({ clickCounter+idx: idx })
-    //     })
-    // }
-
-// const counts = this.props.animalData.map(animal,idx =>{
-//     return ('clickCounter'+idx)
-// }
-
-// )
-
 class HornedBeast extends React.Component {
         constructor(props) {
         super(props);
@@ -29,16 +17,13 @@ class HornedBeast extends React.Component {
 
     render() {
         return (
-            <div>
-                {this.state.animals.map(animal => {
-                    return (
-                    <div key={animal._id}>
+                 <div key={this.state.animals._id}>
                       <Card >
-                        <Card.Img variant="top" src={animal.image_url} alt={animal.keyword}/>
+                        <Card.Img variant="top" src={this.state.animals.image_url} alt={this.state.animals.keyword}/>
                         <Card.Body>
-                          <Card.Title>{animal.title}</Card.Title>
+                          <Card.Title>{this.state.animals.title}</Card.Title>
                           <Card.Text>
-                          {animal.description}
+                          {this.state.animals.description}
                           </Card.Text>
                         </Card.Body>
                         <Card.Footer>
@@ -48,9 +33,6 @@ class HornedBeast extends React.Component {
                             </Card.Footer>
                       </Card>
                     </div>
-                    )
-                })}
-            </div>
         )
     }
 }
