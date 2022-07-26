@@ -21,7 +21,7 @@ class Main extends React.Component {
                         return (
 
                             <Col>
-                                <HornedBeast animalData={animal} />
+                                <HornedBeast animalData={animal} showModal={this.props.showModal} />
                             </Col>
 
                         )
