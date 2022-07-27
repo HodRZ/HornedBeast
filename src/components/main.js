@@ -11,13 +11,14 @@ class Main extends React.Component {
         this.state = {
             animalData: this.props.data
         }
+        console.log(this.props.data)
     }
 
     render() {
         return (
             <Row xs={1} md={3} className="g-4" key='11' >
                 {
-                    this.state.animalData.map(animal => {
+                    this.props.data.map(animal => {
                         return (
 
                             <Col>

@@ -20,22 +20,24 @@ class HornedBeast extends React.Component {
 
     render() {
         return (
-            <div key={this.state.animals._id}>
+            <div key={this.props.animalData._id}>
                 <Card >
-                    <Card.Img variant="top" src={this.state.animals.image_url} alt={this.state.animals.keyword} />
+                    <Card.Img variant="top" src={this.props.animalData.image_url} alt={this.props.animalData.keyword} />
                     <Card.Body>
-                        <Card.Title>{this.state.animals.title}</Card.Title>
+                        <Card.Title>{this.props.animalData.title}</Card.Title>
                         <Card.Text>
-                            {this.state.animals.description}
+                            {this.props.animalData.description}
+
                         </Card.Text>
                     </Card.Body>
                     <Card.Footer>
                         <Button variant="primary" size="sm" onClick={this.handleClick}>
                             Favorite {this.state.clickCounter} ♥
                         </Button>{' '}
-                        <Button variant="secondary" size="sm" value={this.state.animals._id} onClick={this.modalClick}>
+                        <Button variant="secondary" size="sm" value={this.props.animalData._id} onClick={this.modalClick}>
                             Expand
-                        </Button>{' '}
+                        </Button>
+                        <span> Number of Horns: {this.props.animalData.horns}</span>
                     </Card.Footer>
                 </Card>
             </div>
