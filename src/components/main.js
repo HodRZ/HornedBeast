@@ -6,12 +6,13 @@ import Row from 'react-bootstrap/Row';
 
 
 class Main extends React.Component {
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //         animalData: this.props.data
-    //     }
-    // }
+    constructor(props) {
+        super(props);
+        this.state = {
+            animalData: this.props.data
+        }
+        console.log(this.props.data)
+    }
 
     render() {
         return (

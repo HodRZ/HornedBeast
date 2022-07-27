@@ -38,8 +38,7 @@ class App extends React.Component {
   filterSelect = (e) => {
     console.log(e.target.formSelect.value);
     let select = this.state.animalData.filter(animal => {
-      this.resetData()
-      if (parseInt(e.target.formSelect.value) === 0) return this.state.animalData;
+      if (parseInt(e.target.formSelect.value) === 0) return data;
       else return (animal.horns === parseInt(e.target.formSelect.value))
     });
     this.setState({
