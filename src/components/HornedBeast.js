@@ -10,9 +10,12 @@ class HornedBeast extends React.Component {
             clickCounter: 0
         }
     }
-    showModal = e => this.props.showModal
+    // showModal = (info) => this.props.showModal(this.props.animals)
     handleClick = (id) => {
         this.setState({ clickCounter: this.state.clickCounter + 1 })
+    }
+    modalClick = () => {
+        this.props.showModal(this.props.animalData);
     }
 
     render() {
@@ -30,7 +33,7 @@ class HornedBeast extends React.Component {
                         <Button variant="primary" size="sm" onClick={this.handleClick}>
                             Favorite {this.state.clickCounter} ♥
                         </Button>{' '}
-                        <Button variant="secondary" size="sm" value={this.state.animals._id} onClick={this.showModal()}>
+                        <Button variant="secondary" size="sm" value={this.state.animals._id} onClick={this.modalClick}>
                             Expand
                         </Button>{' '}
                     </Card.Footer>
