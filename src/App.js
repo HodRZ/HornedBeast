@@ -4,48 +4,36 @@ import Header from './components/header'
 import Footer from './components/footer';
 import Main from './components/main';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Modal from './components/SelectedBeast';
+import MyModal from './components/SelectedBeast';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       animalData: data,
-      // animalId: 1
+      selectedAnimal: {},
+      showModal: false
     }
   }
-  // state = {
-  //   show: false
-  // };
-
-  onClose = e => {
-    this.props.show = false;
-    // this.setState({
-    //   animalId: 0
-    // })
-  };
-  showModal = e => {
+  showModal = (animal) => {
     this.setState({
-      animalId: e.target.value,
-      show: !this.state.show
-    });
-    console.log(e.target.value)
-    // console.log(this.state)
-    // console.log(this.state.animalData.filter(obj => obj._id === parseInt(this.state.animalId)))
-    // console.log(this.state.animalData.filter(obj => obj.id === this.state.animalID))
+      showModal: true,
+      selectedAnimal: animal
+    })
+    console.log(animal)
   };
+  onModalHide = () => {
+    this.setState({
+      showModal: false,
+    })
+  }
 
   render() {
     return (
-      <div key='1' >
+      <div key='appKey' >
         <Header />
-        <>
-          {console.log(this.state.animalId)}
-          {console.log(this.state.animalData.filter(animal => (animal._id === parseInt(this.state.animalId)))[0])}
-          <Modal onClose={this.onClose} show={this.state.show} animal={data.filter(animal => animal._id === parseInt(this.state.animalId))[0]}>
-          </Modal>
-        </>
         <Main data={this.state.animalData} showModal={this.showModal} />
+        <MyModal show={this.state.showModal} onHide={this.onModalHide} selectedAnimal={this.state.selectedAnimal} />
         <Footer />
       </div >
     )
@@ -55,4 +43,3 @@ class App extends React.Component {
 export default App;
 
 
-// Array.filter(obj => obj.id === this.state.animalID)
