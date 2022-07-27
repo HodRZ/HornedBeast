@@ -27,6 +27,7 @@ class HornedBeast extends React.Component {
                         <Card.Title>{this.state.animals.title}</Card.Title>
                         <Card.Text>
                             {this.state.animals.description}
+
                         </Card.Text>
                     </Card.Body>
                     <Card.Footer>
@@ -35,7 +36,8 @@ class HornedBeast extends React.Component {
                         </Button>{' '}
                         <Button variant="secondary" size="sm" value={this.state.animals._id} onClick={this.modalClick}>
                             Expand
-                        </Button>{' '}
+                        </Button>
+                        <span> Number of Horns: {this.state.animals.horns}</span>
                     </Card.Footer>
                 </Card>
             </div>

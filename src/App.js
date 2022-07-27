@@ -5,6 +5,7 @@ import Footer from './components/footer';
 import Main from './components/main';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MyModal from './components/SelectedBeast';
+import Form from './components/form'
 
 class App extends React.Component {
   constructor(props) {
@@ -12,7 +13,8 @@ class App extends React.Component {
     this.state = {
       animalData: data,
       selectedAnimal: {},
-      showModal: false
+      showModal: false,
+      selectedHorn: 0
     }
   }
   showModal = (animal) => {
@@ -27,12 +29,31 @@ class App extends React.Component {
       showModal: false,
     })
   }
+  resetData = () => {
+    this.setState({
+      animalData: data
+    })
+  }
+
+  filterSelect = (e) => {
+    console.log(e.target.formSelect.value);
+    let select = this.state.animalData.filter(animal => {
+      this.resetData()
+      if (parseInt(e.target.formSelect.value) === 0) return this.state.animalData;
+      else return (animal.horns === parseInt(e.target.formSelect.value))
+    });
+    this.setState({
+      animalData: select
+    })
+    console.log(select)
+  }
 
   render() {
     return (
       <div key='appKey' >
         <Header />
-        <Main data={this.state.animalData} showModal={this.showModal} />
+        <Form filterSelect={this.filterSelect} />
+        <Main data={this.state.animalData} showModal={this.showModal} horn={this.state.selectedHorn} />
         <MyModal show={this.state.showModal} onHide={this.onModalHide} selectedAnimal={this.state.selectedAnimal} />
         <Footer />
       </div >

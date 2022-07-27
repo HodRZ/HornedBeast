@@ -1,6 +1,7 @@
 import React from "react";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import Image from 'react-bootstrap/Image'
 
 class MyModal extends React.Component {
     render() {
@@ -15,7 +16,7 @@ class MyModal extends React.Component {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <img src={this.props.selectedAnimal.image_url} alt={this.props.selectedAnimal.name} />
+                    <Image src={this.props.selectedAnimal.image_url} alt={this.props.selectedAnimal.name} fluid />
                     <p>
                         {this.props.selectedAnimal.description}
                     </p>
