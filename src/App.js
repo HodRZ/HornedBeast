@@ -22,36 +22,38 @@ class App extends React.Component {
       showModal: true,
       selectedAnimal: animal
     })
-    console.log(animal)
   };
   onModalHide = () => {
     this.setState({
       showModal: false,
     })
   }
-  resetData = () => {
+  resetForm = () => {
     this.setState({
       animalData: data
     })
   }
+  formtData = (value) => {
+    this.resetForm()
+    const select = data.filter(animal => {
+      return (value === 0) ? data : (animal.horns === value)
+    })
+    return select
+  }
 
   filterSelect = (e) => {
     console.log(e.target.formSelect.value);
-    let select = this.state.animalData.filter(animal => {
-      if (parseInt(e.target.formSelect.value) === 0) return data;
-      else return (animal.horns === parseInt(e.target.formSelect.value))
-    });
     this.setState({
-      animalData: select
+      animalData: this.formtData(parseInt(e.target.formSelect.value))
     })
-    console.log(select)
+
   }
 
   render() {
     return (
       <div key='appKey' >
         <Header />
-        <Form filterSelect={this.filterSelect} />
+        <Form filterSelect={this.filterSelect} reset={this.resetForm} />
         <Main data={this.state.animalData} showModal={this.showModal} horn={this.state.selectedHorn} />
         <MyModal show={this.state.showModal} onHide={this.onModalHide} selectedAnimal={this.state.selectedAnimal} />
         <Footer />
