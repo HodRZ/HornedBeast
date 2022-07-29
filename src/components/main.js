@@ -1,4 +1,5 @@
 import React from "react"
+import HornedBeast from "./HornedBeast";
 const beasts = [{
     "_id": 1,
     "image_url": "http://3.bp.blogspot.com/_DBYF1AdFaHw/TE-f0cDQ24I/AAAAAAAACZg/l-FdTZ6M7z8/s1600/Unicorn_and_Narwhal_by_dinglehopper.jpg",
@@ -26,26 +27,27 @@ const beasts = [{
     "horns": 1
 }]
 
-const list = []
-
-beasts.forEach(animal => {
-    list.push(
-        <div key={animal._id} className={animal.horns} >
-            <img alt={animal.keyword} src={animal.image_url} title={animal.title}></img>
-            <h2>{animal.title}</h2>
-            <p>
-                {animal.description}
-            </p>
-        </div >
-    )
-});
 
 class Main extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            animalData: beasts
+        }
+    }
     render() {
         return (
-            <div>
-                {list}
-            </div>
+            <>
+                {
+                    this.state.animalData.map(animal => {
+                        return (
+                            <>
+                                <HornedBeast animal={animal} />
+                            </>
+                        )
+                    })
+                }
+            </>
         )
     }
 }
